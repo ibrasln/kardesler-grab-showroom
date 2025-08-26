@@ -14,7 +14,7 @@ namespace IboshEngine.Runtime.Core.CameraManagement
     /// </summary>
     public class CameraManager : IboshSingleton<CameraManager>
     {
-        [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera sampleCamera;
+        [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera noneCamera;
         [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera menuCamera;
         [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera showroomCamera;
 
@@ -62,7 +62,7 @@ namespace IboshEngine.Runtime.Core.CameraManagement
         public async void MoveToNone()
         {
             EventManagerProvider.Camera.Broadcast(CameraEvent.OnNoneCameraStarted);
-            await SwitchToCamAsync(sampleCamera);
+            await SwitchToCamAsync(noneCamera);
             EventManagerProvider.Camera.Broadcast(CameraEvent.OnNoneCameraCompleted);
         }
 
@@ -100,7 +100,7 @@ namespace IboshEngine.Runtime.Core.CameraManagement
 
         private void ResetPriorities()
         {
-            sampleCamera.Priority = 0;
+            noneCamera.Priority = 0;
             menuCamera.Priority = 0;
             showroomCamera.Priority = 0;
         }
@@ -110,9 +110,9 @@ namespace IboshEngine.Runtime.Core.CameraManagement
         #region Inspector Buttons
 
         [Button(ButtonSizes.Medium)]
-        public void ToSample()
+        public void ToNone()
         {
-            SetPriority(sampleCamera);
+            SetPriority(noneCamera);
         }
 
         [Button(ButtonSizes.Medium)]
