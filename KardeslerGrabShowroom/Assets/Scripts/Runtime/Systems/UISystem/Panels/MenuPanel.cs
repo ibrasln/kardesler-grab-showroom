@@ -14,6 +14,15 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
         [SerializeField] private Button contactButton;
         [SerializeField] private Button requestFormButton;
 
+        #region Built-In
+
+        private void Awake()
+        {
+            Show();
+        }
+
+        #endregion
+
         #region Event Subscriptions
 
         protected override void SubscribeToEvents()

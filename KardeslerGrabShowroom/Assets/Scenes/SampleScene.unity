@@ -383,45 +383,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8740574176065634436, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 276519796}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
 --- !u!224 &276519794 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1633771929377122030, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
   m_PrefabInstance: {fileID: 276519793}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &276519795 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8740574176065634436, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
-  m_PrefabInstance: {fileID: 276519793}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &276519796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276519795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c54a93eec83151247a95c0fffb80f893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IboshEngine.Runtime.Systems.UISystem.Animation.AnimationController
-  animationType: 2
-  AnimationDuration: 0.1
-  showDelay: 0.4
-  HideDelay: 0
-  initialScale: 0.85
-  targetScale: 1
 --- !u!114 &276519797 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7682841047808141714, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
   m_PrefabInstance: {fileID: 276519793}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276519795}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -1132,45 +1106,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8740574176065634436, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 511753592}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
 --- !u!224 &511753590 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1633771929377122030, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
   m_PrefabInstance: {fileID: 511753589}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &511753591 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8740574176065634436, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
-  m_PrefabInstance: {fileID: 511753589}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &511753592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511753591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c54a93eec83151247a95c0fffb80f893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IboshEngine.Runtime.Systems.UISystem.Animation.AnimationController
-  animationType: 2
-  AnimationDuration: 0.1
-  showDelay: 0.2
-  HideDelay: 0
-  initialScale: 0.85
-  targetScale: 1
 --- !u!114 &511753593 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7682841047808141714, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
   m_PrefabInstance: {fileID: 511753589}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511753591}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -1835,45 +1783,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8740574176065634436, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 719389787}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
 --- !u!224 &719389785 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1633771929377122030, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
   m_PrefabInstance: {fileID: 719389784}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &719389786 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8740574176065634436, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
-  m_PrefabInstance: {fileID: 719389784}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &719389787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719389786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c54a93eec83151247a95c0fffb80f893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IboshEngine.Runtime.Systems.UISystem.Animation.AnimationController
-  animationType: 2
-  AnimationDuration: 0.1
-  showDelay: 0.3
-  HideDelay: 0
-  initialScale: 0.85
-  targetScale: 1
 --- !u!114 &719389788 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7682841047808141714, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
   m_PrefabInstance: {fileID: 719389784}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719389786}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -2297,45 +2219,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8740574176065634436, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1031877377}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
 --- !u!224 &1031877375 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1633771929377122030, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
   m_PrefabInstance: {fileID: 1031877374}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1031877376 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8740574176065634436, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
-  m_PrefabInstance: {fileID: 1031877374}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1031877377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1031877376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c54a93eec83151247a95c0fffb80f893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IboshEngine.Runtime.Systems.UISystem.Animation.AnimationController
-  animationType: 2
-  AnimationDuration: 0.1
-  showDelay: 0.1
-  HideDelay: 0
-  initialScale: 0.85
-  targetScale: 1
 --- !u!114 &1031877378 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7682841047808141714, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
   m_PrefabInstance: {fileID: 1031877374}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1031877376}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -3425,45 +3321,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8740574176065634436, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1858560339}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
 --- !u!224 &1858560337 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1633771929377122030, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
   m_PrefabInstance: {fileID: 1858560336}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1858560338 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8740574176065634436, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
-  m_PrefabInstance: {fileID: 1858560336}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1858560339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858560338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c54a93eec83151247a95c0fffb80f893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IboshEngine.Runtime.Systems.UISystem.Animation.AnimationController
-  animationType: 2
-  AnimationDuration: 0.1
-  showDelay: 0.1
-  HideDelay: 0
-  initialScale: 0.85
-  targetScale: 1
 --- !u!114 &1858560340 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7682841047808141714, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
   m_PrefabInstance: {fileID: 1858560336}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858560338}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}

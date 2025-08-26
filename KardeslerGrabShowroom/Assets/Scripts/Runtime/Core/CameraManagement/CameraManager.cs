@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 using IboshEngine.Runtime.Core.EventManagement;
 using DG.Tweening;
 using IboshEngine.Runtime.Utilities.Debugger;
+using Cysharp.Threading.Tasks;
 
 namespace IboshEngine.Runtime.Core.CameraManagement
 {
@@ -47,12 +48,22 @@ namespace IboshEngine.Runtime.Core.CameraManagement
 
         private void SubscribeToEvents()
         {
-
+            EventManagerProvider.UI.AddListener(UIEvent.OnShowroomButtonClicked, HandleOnShowroomButtonClicked);
         }
 
         private void UnsubscribeFromEvents()
         {
+            EventManagerProvider.UI.RemoveListener(UIEvent.OnShowroomButtonClicked, HandleOnShowroomButtonClicked); 
+        }
 
+        #endregion
+
+        #region Event Handling
+
+        private async void HandleOnShowroomButtonClicked()
+        {
+            await UniTask.Delay(250);
+            MoveToShowroom();
         }
 
         #endregion
