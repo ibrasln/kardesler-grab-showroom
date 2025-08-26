@@ -22,5 +22,18 @@ namespace IboshEngine.Runtime.Core.EventManagement
     {
         OnNoneCameraStarted,
         OnNoneCameraCompleted,
+        OnMenuCameraStarted,
+        OnMenuCameraCompleted,
+        OnShowroomCameraStarted,
+        OnShowroomCameraCompleted,
+    }
+
+    /// <summary>
+    /// Enum defining different types of Showroom events.
+    /// </summary>
+    public enum ShowroomEvent
+    {
+        OnShowroomMovementStarted,
+        OnShowroomMovementCompleted,
     }
 }

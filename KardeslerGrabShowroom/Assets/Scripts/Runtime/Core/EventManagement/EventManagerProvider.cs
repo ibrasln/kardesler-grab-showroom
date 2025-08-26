@@ -8,6 +8,7 @@ namespace IboshEngine.Runtime.Core.EventManagement
         public static readonly UIEventManager UI = new();
         public static readonly DataEventManager Data = new();
         public static readonly CameraEventManager Camera = new();
+        public static readonly ShowroomEventManager Showroom = new();
     }
 
     /// <summary>
@@ -24,7 +25,17 @@ namespace IboshEngine.Runtime.Core.EventManagement
     {
     }
 
+    /// <summary>
+    /// Event manager for camera events.
+    /// </summary>
     public class CameraEventManager : BaseEventManager<CameraEvent>
+    {
+    }
+
+    /// <summary>
+    /// Event manager for showroom events.
+    /// </summary>
+    public class ShowroomEventManager : BaseEventManager<ShowroomEvent>
     {
     }
 }

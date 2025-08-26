@@ -14,9 +14,9 @@ namespace IboshEngine.Runtime.Core.CameraManagement
     /// </summary>
     public class CameraManager : IboshSingleton<CameraManager>
     {
-        [BoxGroup("Virtual Cameras")]
-        [SerializeField]
-        private CinemachineCamera sampleCamera;
+        [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera sampleCamera;
+        [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera menuCamera;
+        [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera showroomCamera;
 
         private CinemachineCamera _currentCamera;
         private CinemachineBrain _cinemachineBrain;
@@ -66,6 +66,20 @@ namespace IboshEngine.Runtime.Core.CameraManagement
             EventManagerProvider.Camera.Broadcast(CameraEvent.OnNoneCameraCompleted);
         }
 
+        public async void MoveToMenu()
+        {
+            EventManagerProvider.Camera.Broadcast(CameraEvent.OnMenuCameraStarted);
+            await SwitchToCamAsync(menuCamera);
+            EventManagerProvider.Camera.Broadcast(CameraEvent.OnMenuCameraCompleted);
+        }
+
+        public async void MoveToShowroom()
+        {
+            EventManagerProvider.Camera.Broadcast(CameraEvent.OnShowroomCameraStarted);
+            await SwitchToCamAsync(showroomCamera);
+            EventManagerProvider.Camera.Broadcast(CameraEvent.OnShowroomCameraCompleted);
+        }
+
         #endregion
 
         #region Virtual Camera Management
@@ -87,6 +101,8 @@ namespace IboshEngine.Runtime.Core.CameraManagement
         private void ResetPriorities()
         {
             sampleCamera.Priority = 0;
+            menuCamera.Priority = 0;
+            showroomCamera.Priority = 0;
         }
 
         #endregion
@@ -97,6 +113,18 @@ namespace IboshEngine.Runtime.Core.CameraManagement
         public void ToSample()
         {
             SetPriority(sampleCamera);
+        }
+
+        [Button(ButtonSizes.Medium)]
+        public void ToMenu()
+        {
+            SetPriority(menuCamera);
+        }
+
+        [Button(ButtonSizes.Medium)]
+        public void ToShowroom()
+        {
+            SetPriority(showroomCamera);
         }
 
         #endregion
