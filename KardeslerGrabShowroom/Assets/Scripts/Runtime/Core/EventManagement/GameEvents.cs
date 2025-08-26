@@ -6,6 +6,10 @@ namespace IboshEngine.Runtime.Core.EventManagement
     public enum UIEvent
     {
         OnSettingsButtonClicked,
+        OnShowroomButtonClicked,
+        OnAboutButtonClicked,
+        OnContactButtonClicked,
+        OnRequestFormButtonClicked,
     }
 
     /// <summary>
