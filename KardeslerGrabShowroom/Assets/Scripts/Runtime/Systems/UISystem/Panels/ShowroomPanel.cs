@@ -2,6 +2,8 @@ using UnityEngine;
 using IboshEngine.Runtime.Systems.UISystem.Panels;
 using UnityEngine.UI;
 using KardeslerGrabShowroom.Utilities;
+using IboshEngine.Runtime.Core.EventManagement;
+using IboshEngine.Runtime.Utilities;
 
 namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 {
@@ -21,6 +23,8 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
             base.SubscribeToEvents();
             previousGrabButton.onClick.AddListener(OnPreviousGrabButtonClicked);
             nextGrabButton.onClick.AddListener(OnNextGrabButtonClicked);
+
+            EventManagerProvider.UI.AddListener(UIEvent.OnShowroomButtonClicked, Show);
         }
 
         protected override void UnsubscribeFromEvents()
@@ -28,6 +32,8 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
             base.UnsubscribeFromEvents();
             previousGrabButton.onClick.RemoveListener(OnPreviousGrabButtonClicked);
             nextGrabButton.onClick.RemoveListener(OnNextGrabButtonClicked);
+
+            EventManagerProvider.UI.RemoveListener(UIEvent.OnShowroomButtonClicked, Show);
         }
 
         #endregion

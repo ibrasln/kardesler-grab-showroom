@@ -43,6 +43,7 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
         private void OnShowroomButtonClicked()
         {
             EventManagerProvider.UI.Broadcast(UIEvent.OnShowroomButtonClicked);
+            Hide();
         }
 
         private void OnSettingsButtonClicked()
