@@ -1,86 +1,137 @@
+using System;
+using System.Collections;
+using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
-using KardeslerGrab.Showroom.Utilities;
 using IboshEngine.Runtime.Core.EventManagement;
 
 namespace KardeslerGrabShowroom.Gameplay.Showroom
 {
-    public class Showroom : MonoBehaviour
-    {
-        private Grab.Grab[] _grabs;
-        private int _currentGrabIndex = 0;
-        private Grab.Grab _currentGrab;
+	public class Showroom : MonoBehaviour 
+	{
+		[BoxGroup("Grab Properties")][ReadOnly]public Grab.Grab CurrentGrab;
+		[SerializeField] private Grab.Grab[] grabs;
 
-        #region Built-In
+		[BoxGroup("Transforms")][SerializeField] private Transform previousGrabTransform;
+		[BoxGroup("Transforms")][SerializeField] private Transform currentGrabTransform;
+		[BoxGroup("Transforms")][SerializeField] private Transform nextGrabTransform;
 
-        private void Start()
-        {
-            _grabs = GetComponentsInChildren<Grab.Grab>(true);
-            SetCurrentGrab(0);
-        }
+		private int _currentGrabIndex = 0;
 
-        #endregion
+		#region Built-In
 
-        #region Movement
+		private void Awake() 
+		{
+			grabs = GetComponentsInChildren<Grab.Grab>(true);
+			foreach (var grab in grabs)
+			{
+				if (grab != null && grab.gameObject.activeSelf)
+				{
+					grab.gameObject.SetActive(false);
+				}
+			}
+		}
 
-        private async UniTask MoveToPreviousGrabAsync()
-        {
-            await transform.DOMoveX(transform.position.x + Settings.ShowroomMovementDistance, Settings.ShowroomMovementDuration).SetEase(Ease.InOutSine).ToUniTask();
-        }
+		private void OnEnable()
+		{
+			SubscribeToEvents();
+		}
 
-        private async UniTask MoveToNextGrabAsync()
-        {
-            await transform.DOMoveX(transform.position.x - Settings.ShowroomMovementDistance, Settings.ShowroomMovementDuration).SetEase(Ease.InOutSine).ToUniTask();
-        }
+		private void OnDisable()
+		{
+			UnsubscribeFromEvents();
+		}
 
-        #endregion
+		#endregion
 
-        #region Grab Management
+		#region Event Subscription
 
-        public async void GetPreviousGrab()
-        {
-            if (_currentGrabIndex <= 0)
-            {
-                return;
-            }
+		private void SubscribeToEvents()
+		{
+			EventManagerProvider.Camera.AddListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraStarted);
+		}
 
-            EventManagerProvider.Showroom.Broadcast(ShowroomEvent.OnShowroomMovementStarted);
+		private void UnsubscribeFromEvents()
+		{
+			EventManagerProvider.Camera.RemoveListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraStarted);
+		}
 
-            await MoveToPreviousGrabAsync();
+		#endregion
 
-            _currentGrab?.Dispose();
+		#region Event Handling
 
-            SetCurrentGrab(_currentGrabIndex - 1);
+		private async void HandleOnShowroomCameraStarted()
+		{
+			await UniTask.Delay(250);
+			Initialize();
+		}
 
-            EventManagerProvider.Showroom.Broadcast(ShowroomEvent.OnShowroomMovementCompleted);
-        }
+		#endregion
 
-        public async void GetNextGrab()
-        {
-            if (_currentGrabIndex >= _grabs.Length - 1)
-            {
-                return;
-            }
+		#region Initialization & Disposal
 
-            EventManagerProvider.Showroom.Broadcast(ShowroomEvent.OnShowroomMovementStarted);
+		public void Initialize()
+		{
+			SetCurrentGrab(0, GrabDirection.Next);
+		}
 
-            await MoveToNextGrabAsync();
+		public void Dispose()
+		{
+		}
 
-            _currentGrab?.Dispose();
+		#endregion
 
-            SetCurrentGrab(_currentGrabIndex + 1);
+		#region Grab Management
 
-            EventManagerProvider.Showroom.Broadcast(ShowroomEvent.OnShowroomMovementCompleted);
-        }
+		private void SetCurrentGrab(int index, GrabDirection direction)
+		{
+			if (CurrentGrab != null)
+			{
+				if (direction == GrabDirection.Previous)
+				{
+					CurrentGrab.Dispose(currentGrabTransform, nextGrabTransform);
+				}
+				else
+				{
+					CurrentGrab.Dispose(currentGrabTransform, previousGrabTransform);
+				}
+			}
 
-        public void SetCurrentGrab(int index)
-        {
-            _currentGrabIndex = index;
-            _currentGrab = _grabs[_currentGrabIndex];
-            _currentGrab.Initialize();
-        }
+			_currentGrabIndex = index;
+			CurrentGrab = grabs[_currentGrabIndex];
+			CurrentGrab.gameObject.SetActive(true);
 
-        #endregion
-    }
+			if (direction == GrabDirection.Previous)
+			{
+				CurrentGrab.Initialize(previousGrabTransform, currentGrabTransform);
+			}
+			else
+			{
+				CurrentGrab.Initialize(nextGrabTransform, currentGrabTransform);
+			}
+		}
+
+		public void GetPreviousGrab()
+		{
+			if (_currentGrabIndex <= 0) return;
+
+			SetCurrentGrab(_currentGrabIndex - 1, GrabDirection.Previous);
+		}
+
+		public void GetNextGrab()
+		{
+			if (_currentGrabIndex >= grabs.Length - 1) return;
+
+			SetCurrentGrab(_currentGrabIndex + 1, GrabDirection.Next);
+		}
+
+		#endregion
+	}
+}
+
+public enum GrabDirection
+{
+	Previous,
+	Next
 }

@@ -1,6 +1,8 @@
 using UnityEngine;
 using DG.Tweening;
 using KardeslerGrab.Showroom.Utilities;
+using Cysharp.Threading.Tasks;
+using IboshEngine.Runtime.Core.EventManagement;
 
 namespace KardeslerGrabShowroom.Gameplay.Grab
 {
@@ -41,15 +43,22 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
 
         #region Initialization & Disposal
 
-        public void Initialize()
+        public async void Initialize(Transform from, Transform to)
         {
+            EventManagerProvider.Showroom.Broadcast(ShowroomEvent.OnGrabMovementStarted);
+            transform.position = from.position;
+            await MoveToAsync(to);
             StartRotation();
+            EventManagerProvider.Showroom.Broadcast(ShowroomEvent.OnGrabMovementCompleted);
         }
 
-        public void Dispose()
+        public async void Dispose(Transform from, Transform to)
         {
             StopRotation();
+            transform.position = from.position;
+            await MoveToAsync(to);
             ResetRotation();
+            gameObject.SetActive(false);
         }
 
         #endregion
@@ -121,6 +130,15 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
                 _isRotating = true;
                 Debug.Log("Rotation resumed");
             }
+        }
+
+        #endregion
+ 
+        #region Movement
+
+        public async UniTask MoveToAsync(Transform target)
+        {
+            await transform.DOMove(target.position, Settings.GrabMovementDuration).SetEase(Ease.InOutSine).ToUniTask();
         }
 
         #endregion

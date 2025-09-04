@@ -106,7 +106,6 @@ namespace IboshEngine.Runtime.Core.CameraManagement
             ResetPriorities();
             targetCam.Priority = 10;
             _currentCamera = targetCam;
-            IboshDebugger.LogMessage($"Switched to {targetCam.name}", "Camera", IboshDebugger.DebugColor.Gray, IboshDebugger.DebugColor.Magenta);
         }
 
         private void ResetPriorities()

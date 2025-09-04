@@ -16,7 +16,7 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 
         #region Built-In
 
-        private void Awake()
+        private void Start()
         {
             Show();
         }

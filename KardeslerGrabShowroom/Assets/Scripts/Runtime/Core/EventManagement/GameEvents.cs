@@ -37,7 +37,7 @@ namespace IboshEngine.Runtime.Core.EventManagement
     /// </summary>
     public enum ShowroomEvent
     {
-        OnShowroomMovementStarted,
-        OnShowroomMovementCompleted,
+        OnGrabMovementStarted,
+        OnGrabMovementCompleted,
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using KardeslerGrabShowroom.Utilities;
 using IboshEngine.Runtime.Core.EventManagement;
 using IboshEngine.Runtime.Utilities;
+using Cysharp.Threading.Tasks;
 
 namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 {
@@ -24,7 +25,9 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
             previousGrabButton.onClick.AddListener(OnPreviousGrabButtonClicked);
             nextGrabButton.onClick.AddListener(OnNextGrabButtonClicked);
 
-            EventManagerProvider.UI.AddListener(UIEvent.OnShowroomButtonClicked, Show);
+            EventManagerProvider.Camera.AddListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraCompleted);
+            EventManagerProvider.Showroom.AddListener(ShowroomEvent.OnGrabMovementStarted, DisableButtons);
+            EventManagerProvider.Showroom.AddListener(ShowroomEvent.OnGrabMovementCompleted, EnableButtons);
         }
 
         protected override void UnsubscribeFromEvents()
@@ -33,12 +36,24 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
             previousGrabButton.onClick.RemoveListener(OnPreviousGrabButtonClicked);
             nextGrabButton.onClick.RemoveListener(OnNextGrabButtonClicked);
 
-            EventManagerProvider.UI.RemoveListener(UIEvent.OnShowroomButtonClicked, Show);
+            EventManagerProvider.Camera.RemoveListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraCompleted);
+            EventManagerProvider.Showroom.RemoveListener(ShowroomEvent.OnGrabMovementStarted, DisableButtons);
+            EventManagerProvider.Showroom.RemoveListener(ShowroomEvent.OnGrabMovementCompleted, EnableButtons);
         }
 
         #endregion
     
         #region Event Handling
+
+        private async void HandleOnShowroomCameraCompleted()
+        {
+            await UniTask.Delay(250);
+            Show();
+        }
+
+        #endregion
+
+        #region Button Actions
 
         private void OnPreviousGrabButtonClicked()
         {
@@ -48,6 +63,22 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
         private void OnNextGrabButtonClicked()
         {
             GameResources.Instance.Showroom.GetNextGrab();
+        }
+
+        #endregion
+
+        #region UI Management
+
+        private void DisableButtons()
+        {
+            previousGrabButton.interactable = false;
+            nextGrabButton.interactable = false;
+        }
+        
+        private void EnableButtons()
+        {
+            previousGrabButton.interactable = true;
+            nextGrabButton.interactable = true;
         }
 
         #endregion
