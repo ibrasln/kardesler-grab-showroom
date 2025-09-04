@@ -17,6 +17,7 @@ namespace IboshEngine.Runtime.Core.CameraManagement
     {
         [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera noneCamera;
         [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera menuCamera;
+        [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera intermediateCamera;
         [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera showroomCamera;
 
         private CinemachineCamera _currentCamera;
@@ -87,6 +88,7 @@ namespace IboshEngine.Runtime.Core.CameraManagement
         public async void MoveToShowroom()
         {
             EventManagerProvider.Camera.Broadcast(CameraEvent.OnShowroomCameraStarted);
+            await SwitchToCamAsync(intermediateCamera);
             await SwitchToCamAsync(showroomCamera);
             EventManagerProvider.Camera.Broadcast(CameraEvent.OnShowroomCameraCompleted);
         }
@@ -113,6 +115,7 @@ namespace IboshEngine.Runtime.Core.CameraManagement
             noneCamera.Priority = 0;
             menuCamera.Priority = 0;
             showroomCamera.Priority = 0;
+            intermediateCamera.Priority = 0;
         }
 
         #endregion
@@ -129,6 +132,12 @@ namespace IboshEngine.Runtime.Core.CameraManagement
         public void ToMenu()
         {
             SetPriority(menuCamera);
+        }
+
+        [Button(ButtonSizes.Medium)]
+        public void ToIntermediate()
+        {
+            SetPriority(intermediateCamera);
         }
 
         [Button(ButtonSizes.Medium)]
