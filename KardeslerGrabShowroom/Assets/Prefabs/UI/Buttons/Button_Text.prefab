@@ -74,8 +74,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292739014
-  m_fontColor: {r: 0.77647066, g: 1, b: 0.86666673, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -224,10 +224,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2240191348706638792, guid: 27802674376415c42889ba85db577e9f, type: 3}
+      propertyPath: offset.x
+      value: 0.00000071525585
+      objectReference: {fileID: 0}
+    - target: {fileID: 2240191348706638792, guid: 27802674376415c42889ba85db577e9f, type: 3}
+      propertyPath: offset.y
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2240191348706638792, guid: 27802674376415c42889ba85db577e9f, type: 3}
+      propertyPath: colorBleedMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3345030675262760752, guid: 27802674376415c42889ba85db577e9f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: efb6c9334e498404883cd7150d537d74, type: 3}
+      objectReference: {fileID: 21300000, guid: 9aa2a0cee233f40aab034a146d8bb4b6, type: 3}
     - target: {fileID: 7292305448193908121, guid: 27802674376415c42889ba85db577e9f, type: 3}
       propertyPath: m_Name
       value: Button_Text

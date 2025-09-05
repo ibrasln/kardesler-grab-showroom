@@ -10,6 +10,8 @@ namespace IboshEngine.Runtime.Core.EventManagement
         OnAboutButtonClicked,
         OnContactButtonClicked,
         OnRequestFormButtonClicked,
+        OnGrabDetailsButtonClicked,
+        OnColorSwitcherButtonClicked,
     }
 
     /// <summary>

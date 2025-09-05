@@ -5,6 +5,7 @@ using KardeslerGrabShowroom.Utilities;
 using IboshEngine.Runtime.Core.EventManagement;
 using IboshEngine.Runtime.Utilities;
 using Cysharp.Threading.Tasks;
+using KardeslerGrabShowroom.Gameplay.Grab;
 
 namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 {
@@ -12,8 +13,31 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
     {
         [SerializeField] private Button previousGrabButton;
         [SerializeField] private Button nextGrabButton;
+        [SerializeField] private Transform colorSwitcherPanel;
+        [SerializeField] private Button colorSwitcherButton;
+        [SerializeField] private Button grabDetailsButton;
 
         #region Built-In
+
+        private void Start()
+        {
+            foreach (Transform child in colorSwitcherPanel)
+            {
+                Button button = child.GetComponent<Button>();
+                Image image = child.GetComponent<Image>();
+                if (button != null && image != null)
+                {
+                    button.onClick.AddListener(() =>
+                    {
+                        Grab currentGrab = GameResources.Instance.Showroom.CurrentGrab;
+                        if (currentGrab != null)
+                        {
+                            currentGrab.SetColor(image.color);
+                        }
+                    });
+                }
+            }
+        }
 
         #endregion
 
@@ -24,6 +48,8 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
             base.SubscribeToEvents();
             previousGrabButton.onClick.AddListener(OnPreviousGrabButtonClicked);
             nextGrabButton.onClick.AddListener(OnNextGrabButtonClicked);
+            colorSwitcherButton.onClick.AddListener(OnColorSwitcherButtonClicked);
+            grabDetailsButton.onClick.AddListener(OnGrabDetailsButtonClicked);
 
             EventManagerProvider.Camera.AddListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraCompleted);
             EventManagerProvider.Showroom.AddListener(ShowroomEvent.OnGrabMovementStarted, DisableButtons);
@@ -35,6 +61,8 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
             base.UnsubscribeFromEvents();
             previousGrabButton.onClick.RemoveListener(OnPreviousGrabButtonClicked);
             nextGrabButton.onClick.RemoveListener(OnNextGrabButtonClicked);
+            colorSwitcherButton.onClick.RemoveListener(OnColorSwitcherButtonClicked);
+            grabDetailsButton.onClick.RemoveListener(OnGrabDetailsButtonClicked);
 
             EventManagerProvider.Camera.RemoveListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraCompleted);
             EventManagerProvider.Showroom.RemoveListener(ShowroomEvent.OnGrabMovementStarted, DisableButtons);
@@ -63,6 +91,16 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
         private void OnNextGrabButtonClicked()
         {
             GameResources.Instance.Showroom.GetNextGrab();
+        }
+
+        private void OnColorSwitcherButtonClicked()
+        {
+            EventManagerProvider.UI.Broadcast(UIEvent.OnColorSwitcherButtonClicked);
+        }
+
+        private void OnGrabDetailsButtonClicked()
+        {
+            EventManagerProvider.UI.Broadcast(UIEvent.OnGrabDetailsButtonClicked);
         }
 
         #endregion
