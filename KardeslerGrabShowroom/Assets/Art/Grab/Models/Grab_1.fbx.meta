@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: STEP_ff00ff
-    second: {fileID: 2100000, guid: 216892814c5f0f84e9d1991a2a9842cb, type: 2}
+    second: {fileID: 2100000, guid: 80163557887c0fd4ba8ac2bbaee52a17, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
