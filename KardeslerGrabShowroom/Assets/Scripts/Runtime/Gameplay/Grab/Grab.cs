@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using DG.Tweening;
 using KardeslerGrab.Showroom.Utilities;
@@ -8,10 +10,28 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
 {
     public class Grab : MonoBehaviour
     {
+        [SerializeField] private List<Renderer> _renderers = new();
         private Tween _rotationTween;
         private bool _isRotating = false;
 
         #region Built-In
+
+        private void Awake()
+        {
+            List<Renderer> allRenderers = GetComponentsInChildren<Renderer>(true).ToList();
+            _renderers = new List<Renderer>();
+            foreach (Renderer renderer in allRenderers)
+            {
+                foreach (Material material in renderer.sharedMaterials)
+                {
+                    if (material != null && material.name.Contains("M_Grab"))
+                    {
+                        _renderers.Add(renderer);
+                        break;
+                    }
+                }
+            }
+        }
 
         private void Start()
         {
@@ -63,16 +83,12 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
 
         #endregion
 
-        #region Reset
+        #region Rotation
 
-        public void ResetRotation()
+         public void ResetRotation()
         {
             transform.localRotation = Quaternion.Euler(Vector3.zero);
         }
-
-        #endregion
-
-        #region Rotation
 
         /// <summary>
         /// Starts continuous rotation of the object
@@ -144,6 +160,22 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
             await transform.DOMove(target.position, Settings.GrabMovementDuration).SetEase(Ease.InOutSine).ToUniTask();
         }
 
+        #endregion
+
+        #region Color
+
+        public void SetColor(Color color)
+        {
+            foreach (var renderer in _renderers)
+            {
+                renderer.material.color = color;
+            }
+        }
+
+        public void OnClicked()
+        {
+            SetColor(Color.yellow);
+        }
         #endregion
     }
 }
