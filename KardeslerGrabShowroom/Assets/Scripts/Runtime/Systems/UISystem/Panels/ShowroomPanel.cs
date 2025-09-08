@@ -13,33 +13,9 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
     {
         [SerializeField] private Button previousGrabButton;
         [SerializeField] private Button nextGrabButton;
-        [SerializeField] private Transform colorSwitcherPanel;
         [SerializeField] private Button colorSwitcherButton;
         [SerializeField] private Button grabDetailsButton;
 
-        #region Built-In
-
-        private void Start()
-        {
-            foreach (Transform child in colorSwitcherPanel)
-            {
-                Button button = child.GetComponent<Button>();
-                Image image = child.GetComponent<Image>();
-                if (button != null && image != null)
-                {
-                    button.onClick.AddListener(() =>
-                    {
-                        Grab currentGrab = GameResources.Instance.Showroom.CurrentGrab;
-                        if (currentGrab != null)
-                        {
-                            currentGrab.SetColor(image.color);
-                        }
-                    });
-                }
-            }
-        }
-
-        #endregion
 
         #region Event Subscriptions
 
@@ -65,8 +41,8 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
             grabDetailsButton.onClick.RemoveListener(OnGrabDetailsButtonClicked);
 
             EventManagerProvider.Camera.RemoveListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraCompleted);
-            EventManagerProvider.Showroom.RemoveListener(ShowroomEvent.OnGrabMovementStarted, DisableButtons);
-            EventManagerProvider.Showroom.RemoveListener(ShowroomEvent.OnGrabMovementCompleted, EnableButtons);
+            EventManagerProvider.Showroom.RemoveListener(ShowroomEvent.OnGrabMovementStarted, ShowBlockingOverlay);
+            EventManagerProvider.Showroom.RemoveListener(ShowroomEvent.OnGrabMovementCompleted, HideBlockingOverlay);
         }
 
         #endregion
@@ -111,12 +87,16 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
         {
             previousGrabButton.interactable = false;
             nextGrabButton.interactable = false;
+            colorSwitcherButton.interactable = false;
+            grabDetailsButton.interactable = false;
         }
         
         private void EnableButtons()
         {
             previousGrabButton.interactable = true;
             nextGrabButton.interactable = true;
+            colorSwitcherButton.interactable = true;
+            grabDetailsButton.interactable = true;
         }
 
         #endregion
