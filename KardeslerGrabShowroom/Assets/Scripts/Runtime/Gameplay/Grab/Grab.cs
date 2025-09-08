@@ -14,6 +14,11 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
         private List<Renderer> _subRenderers = new();
         private Tween _rotationTween;
         private bool _isRotating = false;
+        private Color _mainColor;
+        private Color _subColor;
+
+        public Color MainColor => _mainColor;
+        public Color SubColor => _subColor;
 
         #region Built-In
 
@@ -37,6 +42,8 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
                     }
                 }
             }
+            if (_mainRenderers.Count > 0) _mainColor = _mainRenderers[0].material.color;
+            if (_subRenderers.Count > 0) _subColor = _subRenderers[0].material.color;
         }
 
         private void Start()
@@ -176,6 +183,7 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
             {
                 renderer.material.color = color;
             }
+            _mainColor = color;
         }
 
         public void SetSubColor(Color color)
@@ -184,6 +192,7 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
             {
                 renderer.material.color = color;
             }
+            _subColor = color;
         }
 
         #endregion

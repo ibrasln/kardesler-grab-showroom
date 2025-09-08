@@ -13,20 +13,8 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 {
 	public class ColorSwitcherPanel : PopupPanel 
 	{
-		[SerializeField] private Transform mainColorButtonsParent;
-		[SerializeField] private GameObject mainColorPanel;
-		[SerializeField] private Transform subColorButtonsParent;
-		[SerializeField] private GameObject subColorPanel;
-
-		#region Built-In
-
-		private void Start()
-		{
-			SetColorPanelButtons(mainColorButtonsParent);
-			SetColorPanelButtons(subColorButtonsParent);
-		}
-
-		#endregion
+		[SerializeField] private ColorPicker mainColorPicker;
+		[SerializeField] private ColorPicker subColorPicker;
 
 		#region Event Subscription
 
@@ -46,20 +34,6 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 		
 		#region Button Actions
 
-		private void OnMainColorButtonClicked()
-		{
-			mainColorPanel.SetActive(true);
-			subColorPanel.SetActive(false);
-		}
-		
-		
-		private void OnSubColorButtonClicked()
-		{
-			mainColorPanel.SetActive(false);
-			subColorPanel.SetActive(true);
-		}
-		
-
 		#endregion
 
 		#region UI Management
@@ -67,8 +41,14 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 		public override void Show()
 		{
 			base.Show();
-			mainColorPanel.SetActive(true);
-			subColorPanel.SetActive(false);
+			mainColorPicker?.Initialize(GameResources.Instance.Showroom.CurrentGrab.MainColor);
+			subColorPicker?.Initialize(GameResources.Instance.Showroom.CurrentGrab.SubColor);
+		}
+
+		public override void Hide()
+		{
+			base.Hide();
+			EventManagerProvider.UI.Broadcast(UIEvent.OnColorSwitcherPanelClosed);
 		}
 		
 		#endregion

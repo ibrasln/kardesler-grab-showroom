@@ -18,6 +18,7 @@ namespace KardeslerGrabShowroom.Gameplay.Showroom
 		[BoxGroup("Transforms")][SerializeField] private Transform nextGrabTransform;
 
 		private int _currentGrabIndex = 0;
+		private bool _isInitialized = false;
 
 		#region Built-In
 
@@ -50,11 +51,13 @@ namespace KardeslerGrabShowroom.Gameplay.Showroom
 		private void SubscribeToEvents()
 		{
 			EventManagerProvider.Camera.AddListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraStarted);
+			EventManagerProvider.UI.AddListener<Color32>(UIEvent.OnMainColorChanged, HandleOnMainColorChanged);
 		}
 
 		private void UnsubscribeFromEvents()
 		{
 			EventManagerProvider.Camera.RemoveListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraStarted);
+			EventManagerProvider.UI.RemoveListener<Color32>(UIEvent.OnMainColorChanged, HandleOnMainColorChanged);
 		}
 
 		#endregion
@@ -64,7 +67,16 @@ namespace KardeslerGrabShowroom.Gameplay.Showroom
 		private async void HandleOnShowroomCameraStarted()
 		{
 			await UniTask.Delay(250);
-			Initialize();
+			if (!_isInitialized)
+			{
+				Initialize();
+			}
+		}
+
+		private void HandleOnMainColorChanged(Color32 color)
+		{
+			Debug.Log("HandleOnMainColorChanged: " + color);
+			CurrentGrab.SetMainColor(color);
 		}
 
 		#endregion
@@ -74,6 +86,7 @@ namespace KardeslerGrabShowroom.Gameplay.Showroom
 		public void Initialize()
 		{
 			SetCurrentGrab(0, GrabDirection.Next);
+			_isInitialized = true;
 		}
 
 		public void Dispose()
