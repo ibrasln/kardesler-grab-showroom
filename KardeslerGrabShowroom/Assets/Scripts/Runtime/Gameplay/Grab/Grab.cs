@@ -10,7 +10,8 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
 {
     public class Grab : MonoBehaviour
     {
-        [SerializeField] private List<Renderer> _renderers = new();
+        private List<Renderer> _mainRenderers = new();
+        private List<Renderer> _subRenderers = new();
         private Tween _rotationTween;
         private bool _isRotating = false;
 
@@ -19,15 +20,20 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
         private void Awake()
         {
             List<Renderer> allRenderers = GetComponentsInChildren<Renderer>(true).ToList();
-            _renderers = new List<Renderer>();
+            _mainRenderers = new List<Renderer>();
+            _subRenderers = new List<Renderer>();
+
             foreach (Renderer renderer in allRenderers)
             {
                 foreach (Material material in renderer.sharedMaterials)
                 {
                     if (material != null && material.name.Contains("M_Grab"))
                     {
-                        _renderers.Add(renderer);
-                        break;
+                        _mainRenderers.Add(renderer);
+                    }
+                    else if (material != null && material.name.Contains("M_Other"))
+                    {
+                        _subRenderers.Add(renderer);
                     }
                 }
             }
@@ -164,18 +170,22 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
 
         #region Color
 
-        public void SetColor(Color color)
+        public void SetMainColor(Color color)
         {
-            foreach (var renderer in _renderers)
+            foreach (var renderer in _mainRenderers)
             {
                 renderer.material.color = color;
             }
         }
 
-        public void OnClicked()
+        public void SetSubColor(Color color)
         {
-            SetColor(Color.yellow);
+            foreach (var renderer in _subRenderers)
+            {
+                renderer.material.color = color;
+            }
         }
+
         #endregion
     }
 }

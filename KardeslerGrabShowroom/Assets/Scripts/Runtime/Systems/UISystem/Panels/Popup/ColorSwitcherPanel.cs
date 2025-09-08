@@ -13,28 +13,17 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 {
 	public class ColorSwitcherPanel : PopupPanel 
 	{
-		[SerializeField] private Transform colorButtonsParent;
+		[SerializeField] private Transform mainColorButtonsParent;
+		[SerializeField] private GameObject mainColorPanel;
+		[SerializeField] private Transform subColorButtonsParent;
+		[SerializeField] private GameObject subColorPanel;
 
 		#region Built-In
 
 		private void Start()
 		{
-			foreach (Transform colorButton in colorButtonsParent)
-            {
-                Button button = colorButton.GetComponent<Button>();
-                Image image = colorButton.GetComponent<Image>();
-                if (button != null && image != null)
-                {
-                    button.onClick.AddListener(() =>
-                    {
-                        Grab currentGrab = GameResources.Instance.Showroom.CurrentGrab;
-                        if (currentGrab != null)
-                        {
-                            currentGrab.SetColor(image.color);
-                        }
-                    });
-                }
-            }
+			SetColorPanelButtons(mainColorButtonsParent);
+			SetColorPanelButtons(subColorButtonsParent);
 		}
 
 		#endregion
@@ -55,5 +44,58 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 
 		#endregion
 		
+		#region Button Actions
+
+		private void OnMainColorButtonClicked()
+		{
+			mainColorPanel.SetActive(true);
+			subColorPanel.SetActive(false);
+		}
+		
+		
+		private void OnSubColorButtonClicked()
+		{
+			mainColorPanel.SetActive(false);
+			subColorPanel.SetActive(true);
+		}
+		
+
+		#endregion
+
+		#region UI Management
+
+		public override void Show()
+		{
+			base.Show();
+			mainColorPanel.SetActive(true);
+			subColorPanel.SetActive(false);
+		}
+		
+		#endregion
+
+		#region Color Panel Management
+
+		private void SetColorPanelButtons(Transform colorButtonsParent)
+		{
+			foreach (Transform colorButton in colorButtonsParent)
+            {
+                Button button = colorButton.GetComponent<Button>();
+                Image image = colorButton.GetComponent<Image>();
+
+                if (button != null && image != null)
+                {
+                    button.onClick.AddListener(() =>
+                    {
+                        Grab currentGrab = GameResources.Instance.Showroom.CurrentGrab;
+                        if (currentGrab != null)
+                        {
+                            currentGrab.SetMainColor(image.color);
+                        }
+                    });
+                }
+            }
+		}
+
+		#endregion
 	}
 }
