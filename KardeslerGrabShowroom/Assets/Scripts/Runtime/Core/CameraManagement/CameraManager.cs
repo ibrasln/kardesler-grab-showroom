@@ -22,7 +22,7 @@ namespace IboshEngine.Runtime.Core.CameraManagement
 
         private CinemachineCamera _currentCamera;
         private CinemachineBrain _cinemachineBrain;
-        private float _movementDelay;   
+        private float _movementDelay;
 
         #region Built-In
 

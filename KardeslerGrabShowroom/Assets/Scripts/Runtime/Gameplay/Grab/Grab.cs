@@ -110,7 +110,6 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
         {
             if (_isRotating)
             {
-                Debug.LogWarning("Rotation is already active!");
                 return;
             }
 
@@ -147,7 +146,6 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
             if (_rotationTween != null && _rotationTween.IsActive() && _isRotating)
             {
                 _rotationTween.Pause();
-                Debug.Log("Rotation paused");
             }
         }
 
@@ -160,7 +158,6 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
             {
                 _rotationTween.Play();
                 _isRotating = true;
-                Debug.Log("Rotation resumed");
             }
         }
 

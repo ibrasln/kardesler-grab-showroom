@@ -1194,7 +1194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7506167945517908779, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: AnimationDuration
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9060482323483797204, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: m_Alpha
@@ -3289,7 +3289,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  CustomBlends: {fileID: 0}
+  CustomBlends: {fileID: 11400000, guid: 5578f200041659244ab8e82b458cec79, type: 2}
 --- !u!114 &447284915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5830,7 +5830,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -51.783337}
+  m_AnchoredPosition: {x: 300, y: -51.78334}
   m_SizeDelta: {x: 600, y: 103.56667}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1158906488
