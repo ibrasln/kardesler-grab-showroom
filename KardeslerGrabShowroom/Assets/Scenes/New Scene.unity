@@ -1113,6 +1113,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9882353
       objectReference: {fileID: 0}
+    - target: {fileID: 4206683574571719984, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4390965926608581227, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1203,15 +1207,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5942412173835515514, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5942412173835515514, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: m_Interactable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5942412173835515514, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: m_BlocksRaycasts
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6656918881740155913, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: offset.x
@@ -1314,17 +1318,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6966962210487536911, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
   m_PrefabInstance: {fileID: 178513581}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &178513584 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3004757132817855526, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
-  m_PrefabInstance: {fileID: 178513581}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &178513586 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9130127636816211875, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
@@ -1349,7 +1342,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   backgroundCloseButton: {fileID: 0}
-  closeButton: {fileID: 178513584}
+  closeButton: {fileID: 0}
   notify: {fileID: 0}
   mainColorPicker: {fileID: 295080623}
   subColorPicker: {fileID: 965241689}
@@ -2689,7 +2682,7 @@ Transform:
   m_GameObject: {fileID: 389446703}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 3.5, y: 1.5, z: -29}
+  m_LocalPosition: {x: 4, y: 1.5, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2709,7 +2702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 0
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -2929,7 +2922,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 70
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3056,8 +3049,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447284911}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.18301274, y: -0.6830127, z: 0.18301274, w: 0.6830127}
-  m_LocalPosition: {x: -3.5, y: 1.9, z: -32.6}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 4, y: 1.5, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3075,7 +3068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08656d57c1091c04b886816d6275c4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KardeslerGrabShowroom.Core.CameraManagement.CameraDeviceAdjuster
-  CurrentDeviceType: 1
+  CurrentDeviceType: 0
   cameraSettingsByCamera:
     m_Keys:
     - {fileID: 389446705}
@@ -3740,7 +3733,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64.4
+  m_fontSize: 56.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7246,7 +7239,7 @@ Transform:
   m_GameObject: {fileID: 1529422862}
   serializedVersion: 2
   m_LocalRotation: {x: 0.18301271, y: -0.6830127, z: 0.18301271, w: 0.6830127}
-  m_LocalPosition: {x: -3.5, y: 1.9, z: -32.6}
+  m_LocalPosition: {x: -4.4, y: 2.25, z: -32.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7266,7 +7259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 10
+    m_Value: 0
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -7276,7 +7269,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 70
+    FieldOfView: 65
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -9297,7 +9290,7 @@ Transform:
   m_GameObject: {fileID: 1995868435}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.85491186, z: -0, w: 0.51877326}
-  m_LocalPosition: {x: -3, y: 1.5, z: -29.5}
+  m_LocalPosition: {x: -2, y: 1.5, z: -29.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
