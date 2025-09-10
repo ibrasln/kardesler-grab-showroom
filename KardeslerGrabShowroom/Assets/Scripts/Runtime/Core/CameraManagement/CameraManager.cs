@@ -173,7 +173,7 @@ namespace IboshEngine.Runtime.Core.CameraManagement
         }
 
         [Button(ButtonSizes.Medium)]
-        public void ToColorSwitcher()
+        public void ToColorPicker()
         {
             SetPriority(colorPickerCamera);
         }
