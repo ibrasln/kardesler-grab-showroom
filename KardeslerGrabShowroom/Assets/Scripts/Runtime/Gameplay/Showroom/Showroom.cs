@@ -52,12 +52,14 @@ namespace KardeslerGrabShowroom.Gameplay.Showroom
 		{
 			EventManagerProvider.Camera.AddListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraStarted);
 			EventManagerProvider.UI.AddListener<Color32>(UIEvent.OnMainColorChanged, HandleOnMainColorChanged);
+			EventManagerProvider.UI.AddListener<Color32>(UIEvent.OnSubColorChanged, HandleOnSubColorChanged);
 		}
 
 		private void UnsubscribeFromEvents()
 		{
 			EventManagerProvider.Camera.RemoveListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraStarted);
 			EventManagerProvider.UI.RemoveListener<Color32>(UIEvent.OnMainColorChanged, HandleOnMainColorChanged);
+			EventManagerProvider.UI.RemoveListener<Color32>(UIEvent.OnSubColorChanged, HandleOnSubColorChanged);
 		}
 
 		#endregion
@@ -76,7 +78,19 @@ namespace KardeslerGrabShowroom.Gameplay.Showroom
 		private void HandleOnMainColorChanged(Color32 color)
 		{
 			Debug.Log("HandleOnMainColorChanged: " + color);
-			CurrentGrab.SetMainColor(color);
+			if (CurrentGrab != null)
+			{
+				CurrentGrab.SetMainColor(color);
+			}
+		}
+
+		private void HandleOnSubColorChanged(Color32 color)
+		{
+			Debug.Log("HandleOnSubColorChanged: " + color);
+			if (CurrentGrab != null)
+			{
+				CurrentGrab.SetSubColor(color);
+			}
 		}
 
 		#endregion

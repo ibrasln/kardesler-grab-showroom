@@ -17,6 +17,8 @@ namespace IboshEngine.Runtime.Core.EventManagement
         OnSubColorChanged,
         OnSubColorSelected,
         OnColorSwitcherPanelClosed,
+        OnColorPickerApplied,
+        OnColorPickerCancelled,
     }
 
     /// <summary>

@@ -22,7 +22,7 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
 
         #region Built-In
 
-        private void Awake()
+        private async void Awake()
         {
             List<Renderer> allRenderers = GetComponentsInChildren<Renderer>(true).ToList();
             _mainRenderers = new List<Renderer>();
@@ -42,6 +42,9 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
                     }
                 }
             }
+
+            await UniTask.Delay(1000);
+            
             if (_mainRenderers.Count > 0) _mainColor = _mainRenderers[0].material.color;
             if (_subRenderers.Count > 0) _subColor = _subRenderers[0].material.color;
         }

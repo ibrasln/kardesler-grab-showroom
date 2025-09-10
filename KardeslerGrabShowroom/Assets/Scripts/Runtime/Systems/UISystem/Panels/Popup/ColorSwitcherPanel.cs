@@ -22,27 +22,27 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 		{
 			base.SubscribeToEvents();
 			EventManagerProvider.UI.AddListener(UIEvent.OnColorSwitcherButtonClicked, Show);
+			EventManagerProvider.UI.AddListener(UIEvent.OnColorPickerApplied, Hide);
+			EventManagerProvider.UI.AddListener(UIEvent.OnColorPickerCancelled, Hide);
 		}
 
 		protected override void UnsubscribeFromEvents()
 		{
 			base.UnsubscribeFromEvents();
 			EventManagerProvider.UI.RemoveListener(UIEvent.OnColorSwitcherButtonClicked, Show);
+			EventManagerProvider.UI.RemoveListener(UIEvent.OnColorPickerApplied, Hide);
+			EventManagerProvider.UI.RemoveListener(UIEvent.OnColorPickerCancelled, Hide);
 		}
 
 		#endregion
 		
-		#region Button Actions
-
-		#endregion
-
 		#region UI Management
 
 		public override void Show()
 		{
 			base.Show();
-			mainColorPicker?.Initialize(GameResources.Instance.Showroom.CurrentGrab.MainColor);
-			subColorPicker?.Initialize(GameResources.Instance.Showroom.CurrentGrab.SubColor);
+			mainColorPicker?.Initialize(GameResources.Instance.Showroom.CurrentGrab.MainColor, ColorPickerType.Main);
+			subColorPicker?.Initialize(GameResources.Instance.Showroom.CurrentGrab.SubColor, ColorPickerType.Sub);
 		}
 
 		public override void Hide()

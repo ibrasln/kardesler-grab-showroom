@@ -13,11 +13,13 @@ public class ColorPicker : MonoBehaviour
     [BoxGroup("Components")][SerializeField] private Slider sliderB;
     [BoxGroup("Components")][SerializeField] private TMP_InputField inputFieldHexa;
     [BoxGroup("Components")][SerializeField] private Button buttonCancel;
-    [BoxGroup("Components")][SerializeField] private Button buttonDone;
+    [BoxGroup("Components")][SerializeField] private Button buttonApply;
 
     private Color32 _originalColor;
     private Color32 _modifiedColor;
     private HSV _modifiedHsv;
+
+    private ColorPickerType _colorPickerType;
 
     #region Built-In
     
@@ -29,7 +31,7 @@ public class ColorPicker : MonoBehaviour
         sliderB.onValueChanged.AddListener(SetB);
         inputFieldHexa.onValueChanged.AddListener(SetHexa);
         buttonCancel.onClick.AddListener(Cancel);
-        buttonDone.onClick.AddListener(Done);
+        buttonApply.onClick.AddListener(Apply);
     }
     
     private void OnDisable()
@@ -40,7 +42,7 @@ public class ColorPicker : MonoBehaviour
         sliderB.onValueChanged.RemoveListener(SetB);
         inputFieldHexa.onValueChanged.RemoveListener(SetHexa);
         buttonCancel.onClick.RemoveListener(Cancel);
-        buttonDone.onClick.RemoveListener(Done);
+        buttonApply.onClick.RemoveListener(Apply);
     }
     #endregion
 
@@ -50,10 +52,12 @@ public class ColorPicker : MonoBehaviour
     /// Initializes the ColorPicker with the original color.
     /// </summary>
     /// <param name="original">The original color.</param>
-    public void Initialize(Color original)
+    public void Initialize(Color original, ColorPickerType colorPickerType)
     {
         _originalColor = original;
         _modifiedColor = original;
+        _colorPickerType = colorPickerType;
+        RecalculateMenu(true);
     }
 
     /// <summary>
@@ -82,7 +86,15 @@ public class ColorPicker : MonoBehaviour
         sliderB.transform.GetChild(0).GetComponent<RawImage>().color = new Color32(_modifiedColor.r, _modifiedColor.g, 255, 255);
         sliderB.transform.GetChild(0).GetChild(0).GetComponent<RawImage>().color = new Color32(_modifiedColor.r, _modifiedColor.g, 0, 255);
         inputFieldHexa.text = ColorUtility.ToHtmlStringRGB(_modifiedColor);
-        EventManagerProvider.UI.Broadcast(UIEvent.OnMainColorChanged, _modifiedColor);
+
+        if (_colorPickerType == ColorPickerType.Main)
+        {
+            EventManagerProvider.UI.Broadcast(UIEvent.OnMainColorChanged, _modifiedColor);
+        }
+        else
+        {
+            EventManagerProvider.UI.Broadcast(UIEvent.OnSubColorChanged, _modifiedColor);
+        }
     }
 
     #endregion
@@ -162,15 +174,17 @@ public class ColorPicker : MonoBehaviour
     public void Cancel()
     {
         _modifiedColor = _originalColor;
-        Done();
+        RecalculateMenu(true);
+        EventManagerProvider.UI.Broadcast(UIEvent.OnColorPickerCancelled, _modifiedColor);
     }
 
     /// <summary>
     /// Manually close the ColorPicker and apply the selected color
     /// </summary>
-    public void Done()
+    public void Apply()
     {
-        EventManagerProvider.UI.Broadcast(UIEvent.OnMainColorChanged, _modifiedColor);
+        RecalculateMenu(true);
+        EventManagerProvider.UI.Broadcast(UIEvent.OnColorPickerApplied, _modifiedColor);
     }
     
     #endregion
@@ -251,4 +265,10 @@ public class ColorPicker : MonoBehaviour
             }
         }
     }
+}
+
+public enum ColorPickerType
+{
+    Main,
+    Sub
 }
