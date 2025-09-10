@@ -11,7 +11,7 @@ using KardeslerGrabShowroom.Utilities;
 
 namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 {
-	public class ColorSwitcherPanel : PopupPanel 
+	public class ColorPickerPanel : PopupPanel
 	{
 		[SerializeField] private ColorPicker mainColorPicker;
 		[SerializeField] private ColorPicker subColorPicker;

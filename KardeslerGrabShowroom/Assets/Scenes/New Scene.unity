@@ -1203,15 +1203,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5942412173835515514, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: m_Alpha
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5942412173835515514, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5942412173835515514, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: m_BlocksRaycasts
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6656918881740155913, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: offset.x
@@ -1259,7 +1259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7025415954766474991, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: m_text
-      value: COLOR SWITCHER
+      value: COLOR PICKER
       objectReference: {fileID: 0}
     - target: {fileID: 7025415954766474991, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: m_fontSize
@@ -1287,7 +1287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9130127636816211875, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
       propertyPath: m_Name
-      value: Panel_ColorSwitcher
+      value: Panel_ColorPicker
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9054764289855261585, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
@@ -1356,14 +1356,24 @@ MonoBehaviour:
   OnPanelShown:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
   OnPanelHide:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
+  animationControllers: []
+  _blockingOverlay: {fileID: 0}
+  _canvasGroup: {fileID: 178513588}
   backgroundCloseButton: {fileID: 178513585}
   closeButton: {fileID: 178513584}
   notify: {fileID: 0}
   mainColorPicker: {fileID: 295080623}
   subColorPicker: {fileID: 0}
+--- !u!225 &178513588 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 5942412173835515514, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
+  m_PrefabInstance: {fileID: 178513581}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &198695605
 GameObject:
   m_ObjectHideFlags: 0
@@ -9856,7 +9866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10115,7 +10125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10393,7 +10403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.7137255, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10466,7 +10476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.7137255, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10662,7 +10672,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 255
   m_WholeNumbers: 1
-  m_Value: 255
+  m_Value: 182
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11028,7 +11038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.7137255, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11236,7 +11246,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 360
   m_WholeNumbers: 0
-  m_Value: 255
+  m_Value: 42.823532
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11326,7 +11336,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 255
   m_WholeNumbers: 1
-  m_Value: 255
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11390,7 +11400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.7137255, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11746,7 +11756,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u200B"
+  m_text: "FFB600\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc2cc93475f76427c86a8262bee36b88, type: 2}
   m_sharedMaterial: {fileID: 2269793554123077917, guid: dc2cc93475f76427c86a8262bee36b88, type: 2}
@@ -11877,7 +11887,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6915964879099174132}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -12213,7 +12223,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.15294118, g: 0.8627451, b: 0.58431375, a: 1}
   m_CustomCaretColor: 1
   m_SelectionColor: {r: 0.15294118, g: 0.8627451, b: 0.58431375, a: 0.7529412}
-  m_Text: 
+  m_Text: FFB600
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
