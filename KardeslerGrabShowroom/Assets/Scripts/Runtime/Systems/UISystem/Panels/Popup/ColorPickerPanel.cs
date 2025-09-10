@@ -21,7 +21,7 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 		protected override void SubscribeToEvents()
 		{
 			base.SubscribeToEvents();
-			EventManagerProvider.UI.AddListener(UIEvent.OnColorSwitcherButtonClicked, Show);
+			EventManagerProvider.UI.AddListener(UIEvent.OnColorPickerButtonClicked, Show);
 			EventManagerProvider.UI.AddListener(UIEvent.OnColorPickerApplied, Hide);
 			EventManagerProvider.UI.AddListener(UIEvent.OnColorPickerCancelled, Hide);
 		}
@@ -29,7 +29,7 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 		protected override void UnsubscribeFromEvents()
 		{
 			base.UnsubscribeFromEvents();
-			EventManagerProvider.UI.RemoveListener(UIEvent.OnColorSwitcherButtonClicked, Show);
+			EventManagerProvider.UI.RemoveListener(UIEvent.OnColorPickerButtonClicked, Show);
 			EventManagerProvider.UI.RemoveListener(UIEvent.OnColorPickerApplied, Hide);
 			EventManagerProvider.UI.RemoveListener(UIEvent.OnColorPickerCancelled, Hide);
 		}
@@ -48,7 +48,7 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
 		public override void Hide()
 		{
 			base.Hide();
-			EventManagerProvider.UI.Broadcast(UIEvent.OnColorSwitcherPanelClosed);
+			EventManagerProvider.UI.Broadcast(UIEvent.OnColorPickerPanelClosed);
 		}
 		
 		#endregion

@@ -1325,17 +1325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &178513585 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3060425298909757573, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
-  m_PrefabInstance: {fileID: 178513581}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &178513586 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9130127636816211875, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
@@ -1350,30 +1339,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 178513586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb1a2506273699b4c93a25c9aad270b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 39141c6cf10bcfe42be632493f90840e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KardeslerGrabShowroom.Systems.UISystem.Panels.ColorSwitcherPanel
   OnPanelShown:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
   OnPanelHide:
     m_PersistentCalls:
       m_Calls: []
-    m_CallsDirty: 1
-  animationControllers: []
-  _blockingOverlay: {fileID: 0}
-  _canvasGroup: {fileID: 178513588}
-  backgroundCloseButton: {fileID: 178513585}
+  backgroundCloseButton: {fileID: 0}
   closeButton: {fileID: 178513584}
   notify: {fileID: 0}
   mainColorPicker: {fileID: 295080623}
-  subColorPicker: {fileID: 0}
---- !u!225 &178513588 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 5942412173835515514, guid: 2f5f5e9d77c01614ba03d4135b7d4ceb, type: 3}
-  m_PrefabInstance: {fileID: 178513581}
-  m_PrefabAsset: {fileID: 0}
+  subColorPicker: {fileID: 965241689}
 --- !u!1 &198695605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,7 +1552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8740574176065634436, guid: 4065125fcb5653b47a9664d4f197ff33, type: 3}
       propertyPath: m_Name
-      value: Button_ColorSwitcher
+      value: Button_ColorPicker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2730,7 +2709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 10
+    m_Value: 0
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -2949,7 +2928,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 65
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2983,7 +2962,7 @@ MonoBehaviour:
   menuCamera: {fileID: 389446705}
   intermediateCamera: {fileID: 1995868437}
   showroomCamera: {fileID: 2050432077}
-  colorSwitcherCamera: {fileID: 1529422864}
+  colorPickerCamera: {fileID: 1529422864}
 --- !u!114 &447284914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3076,8 +3055,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447284911}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000012228238, y: -0.70218414, z: -0.000012399098, w: 0.7119954}
-  m_LocalPosition: {x: 3.946, y: 1.29, z: -29.728}
+  m_LocalRotation: {x: 0.12278779, y: -0.6963643, z: 0.12278779, w: 0.6963643}
+  m_LocalPosition: {x: -4.465, y: 1.705, z: -32.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7227,7 +7206,7 @@ GameObject:
   - component: {fileID: 1529422863}
   - component: {fileID: 1529422864}
   m_Layer: 0
-  m_Name: Camera_ColorSwitcher
+  m_Name: Camera_ColorPicker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7262,7 +7241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
     Enabled: 1
-    m_Value: 5
+    m_Value: 10
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -8660,7 +8639,7 @@ MonoBehaviour:
       m_Calls: []
   previousGrabButton: {fileID: 623695710}
   nextGrabButton: {fileID: 1849540905}
-  colorSwitcherButton: {fileID: 204100129}
+  colorPickerButton: {fileID: 204100129}
   grabDetailsButton: {fileID: 1232982980}
 --- !u!1 &1828357276
 GameObject:

@@ -13,7 +13,7 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
     {
         [SerializeField] private Button previousGrabButton;
         [SerializeField] private Button nextGrabButton;
-        [SerializeField] private Button colorSwitcherButton;
+        [SerializeField] private Button colorPickerButton;
         [SerializeField] private Button grabDetailsButton;
 
 
@@ -24,7 +24,7 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
             base.SubscribeToEvents();
             previousGrabButton.onClick.AddListener(OnPreviousGrabButtonClicked);
             nextGrabButton.onClick.AddListener(OnNextGrabButtonClicked);
-            colorSwitcherButton.onClick.AddListener(OnColorSwitcherButtonClicked);
+            colorPickerButton.onClick.AddListener(OnColorPickerButtonClicked);
             grabDetailsButton.onClick.AddListener(OnGrabDetailsButtonClicked);
 
             EventManagerProvider.Camera.AddListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraCompleted);
@@ -37,7 +37,7 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
             base.UnsubscribeFromEvents();
             previousGrabButton.onClick.RemoveListener(OnPreviousGrabButtonClicked);
             nextGrabButton.onClick.RemoveListener(OnNextGrabButtonClicked);
-            colorSwitcherButton.onClick.RemoveListener(OnColorSwitcherButtonClicked);
+            colorPickerButton.onClick.RemoveListener(OnColorPickerButtonClicked);
             grabDetailsButton.onClick.RemoveListener(OnGrabDetailsButtonClicked);
 
             EventManagerProvider.Camera.RemoveListener(CameraEvent.OnShowroomCameraCompleted, HandleOnShowroomCameraCompleted);
@@ -69,9 +69,9 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
             GameResources.Instance.Showroom.GetNextGrab();
         }
 
-        private void OnColorSwitcherButtonClicked()
+        private void OnColorPickerButtonClicked()
         {
-            EventManagerProvider.UI.Broadcast(UIEvent.OnColorSwitcherButtonClicked);
+            EventManagerProvider.UI.Broadcast(UIEvent.OnColorPickerButtonClicked);
         }
 
         private void OnGrabDetailsButtonClicked()
@@ -87,7 +87,7 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
         {
             previousGrabButton.interactable = false;
             nextGrabButton.interactable = false;
-            colorSwitcherButton.interactable = false;
+            colorPickerButton.interactable = false;
             grabDetailsButton.interactable = false;
         }
         
@@ -95,7 +95,7 @@ namespace KardeslerGrabShowroom.Systems.UISystem.Panels
         {
             previousGrabButton.interactable = true;
             nextGrabButton.interactable = true;
-            colorSwitcherButton.interactable = true;
+            colorPickerButton.interactable = true;
             grabDetailsButton.interactable = true;
         }
 

@@ -11,12 +11,12 @@ namespace IboshEngine.Runtime.Core.EventManagement
         OnContactButtonClicked,
         OnRequestFormButtonClicked,
         OnGrabDetailsButtonClicked,
-        OnColorSwitcherButtonClicked,
+        OnColorPickerButtonClicked,
         OnMainColorChanged,
         OnMainColorSelected,
         OnSubColorChanged,
         OnSubColorSelected,
-        OnColorSwitcherPanelClosed,
+        OnColorPickerPanelClosed,
         OnColorPickerApplied,
         OnColorPickerCancelled,
     }
@@ -39,8 +39,8 @@ namespace IboshEngine.Runtime.Core.EventManagement
         OnMenuCameraCompleted,
         OnShowroomCameraStarted,
         OnShowroomCameraCompleted,
-        OnColorSwitcherCameraStarted,
-        OnColorSwitcherCameraCompleted,
+        OnColorPickerCameraStarted,
+        OnColorPickerCameraCompleted,
     }
 
     /// <summary>

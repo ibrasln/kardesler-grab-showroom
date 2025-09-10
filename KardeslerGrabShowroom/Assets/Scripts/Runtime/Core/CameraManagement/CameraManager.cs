@@ -18,7 +18,7 @@ namespace IboshEngine.Runtime.Core.CameraManagement
         [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera menuCamera;
         [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera intermediateCamera;
         [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera showroomCamera;
-        [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera colorSwitcherCamera;
+        [BoxGroup("Virtual Cameras")][SerializeField] private CinemachineCamera colorPickerCamera;
 
         private CinemachineCamera _currentCamera;
         private CinemachineBrain _cinemachineBrain;
@@ -50,15 +50,15 @@ namespace IboshEngine.Runtime.Core.CameraManagement
         private void SubscribeToEvents()
         {
             EventManagerProvider.UI.AddListener(UIEvent.OnShowroomButtonClicked, HandleOnShowroomButtonClicked);
-            EventManagerProvider.UI.AddListener(UIEvent.OnColorSwitcherButtonClicked, HandleOnColorSwitcherButtonClicked);
-            EventManagerProvider.UI.AddListener(UIEvent.OnColorSwitcherPanelClosed, HandleOnColorSwitcherPanelClosed);
+            EventManagerProvider.UI.AddListener(UIEvent.OnColorPickerButtonClicked, HandleOnColorPickerButtonClicked);
+            EventManagerProvider.UI.AddListener(UIEvent.OnColorPickerPanelClosed, HandleOnColorPickerPanelClosed);
         }
 
         private void UnsubscribeFromEvents()
         {
             EventManagerProvider.UI.RemoveListener(UIEvent.OnShowroomButtonClicked, HandleOnShowroomButtonClicked); 
-            EventManagerProvider.UI.RemoveListener(UIEvent.OnColorSwitcherButtonClicked, HandleOnColorSwitcherButtonClicked);
-            EventManagerProvider.UI.RemoveListener(UIEvent.OnColorSwitcherPanelClosed, HandleOnColorSwitcherPanelClosed);
+            EventManagerProvider.UI.RemoveListener(UIEvent.OnColorPickerButtonClicked, HandleOnColorPickerButtonClicked);
+            EventManagerProvider.UI.RemoveListener(UIEvent.OnColorPickerPanelClosed, HandleOnColorPickerPanelClosed);
         }
 
         #endregion
@@ -71,13 +71,13 @@ namespace IboshEngine.Runtime.Core.CameraManagement
             MoveToShowroom(true);
         }
 
-        private async void HandleOnColorSwitcherButtonClicked()
+        private async void HandleOnColorPickerButtonClicked()
         {
             await UniTask.Delay(250);
-            MoveToColorSwitcher();
+            MoveToColorPicker();
         }
 
-        private void HandleOnColorSwitcherPanelClosed()
+        private void HandleOnColorPickerPanelClosed()
         {
             MoveToShowroom(false);
         }
@@ -111,11 +111,11 @@ namespace IboshEngine.Runtime.Core.CameraManagement
             EventManagerProvider.Camera.Broadcast(CameraEvent.OnShowroomCameraCompleted);
         }
 
-        public async void MoveToColorSwitcher()
+        public async void MoveToColorPicker()
         {
-            EventManagerProvider.Camera.Broadcast(CameraEvent.OnColorSwitcherCameraStarted);
-            await SwitchToCamAsync(colorSwitcherCamera);
-            EventManagerProvider.Camera.Broadcast(CameraEvent.OnColorSwitcherCameraCompleted);
+            EventManagerProvider.Camera.Broadcast(CameraEvent.OnColorPickerCameraStarted);
+            await SwitchToCamAsync(colorPickerCamera);
+            EventManagerProvider.Camera.Broadcast(CameraEvent.OnColorPickerCameraCompleted);
         }
 
         #endregion
@@ -141,7 +141,7 @@ namespace IboshEngine.Runtime.Core.CameraManagement
             menuCamera.Priority = 0;
             showroomCamera.Priority = 0;
             intermediateCamera.Priority = 0;
-            colorSwitcherCamera.Priority = 0;
+            colorPickerCamera.Priority = 0;
         }
 
         #endregion
@@ -175,7 +175,7 @@ namespace IboshEngine.Runtime.Core.CameraManagement
         [Button(ButtonSizes.Medium)]
         public void ToColorSwitcher()
         {
-            SetPriority(colorSwitcherCamera);
+            SetPriority(colorPickerCamera);
         }
 
         #endregion
