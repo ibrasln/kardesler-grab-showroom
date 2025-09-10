@@ -45,15 +45,29 @@ namespace IboshEngine.Runtime.Systems.UISystem.Panels
         protected override void SubscribeToEvents()
         {
             base.SubscribeToEvents();
-            closeButton?.onClick.AddListener(Hide);
-            backgroundCloseButton?.onClick.AddListener(Hide);
+            closeButton?.onClick.AddListener(OnCloseButtonClicked);
+            backgroundCloseButton?.onClick.AddListener(OnBackgroundCloseButtonClicked);
         }
 
         protected override void UnsubscribeFromEvents()
         {
             base.UnsubscribeFromEvents();
-            closeButton?.onClick.RemoveListener(Hide);
-            backgroundCloseButton?.onClick.RemoveListener(Hide);
+            closeButton?.onClick.RemoveListener(OnCloseButtonClicked);
+            backgroundCloseButton?.onClick.RemoveListener(OnBackgroundCloseButtonClicked);
+        }
+
+        #endregion
+
+        #region Button Actions
+
+        protected virtual void OnCloseButtonClicked()
+        {
+            Hide();
+        }
+
+        protected virtual void OnBackgroundCloseButtonClicked()
+        {
+            Hide();
         }
 
         #endregion

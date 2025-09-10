@@ -12,14 +12,26 @@ public class ColorPicker : MonoBehaviour
     [BoxGroup("Components")][SerializeField] private Slider sliderG;
     [BoxGroup("Components")][SerializeField] private Slider sliderB;
     [BoxGroup("Components")][SerializeField] private TMP_InputField inputFieldHexa;
-    [BoxGroup("Components")][SerializeField] private Button buttonCancel;
-    [BoxGroup("Components")][SerializeField] private Button buttonApply;
 
     private Color32 _originalColor;
     private Color32 _modifiedColor;
     private HSV _modifiedHsv;
-
     private ColorPickerType _colorPickerType;
+
+    /// <summary>
+    /// Returns true if the color has been modified from its original value.
+    /// </summary>
+    private bool IsModified
+    {
+        get
+        {
+            return !_originalColor.Equals(_modifiedColor);
+        }
+    }
+
+    public Color32 OriginalColor => _originalColor;
+    public Color32 ModifiedColor => _modifiedColor;
+
 
     #region Built-In
     
@@ -30,8 +42,8 @@ public class ColorPicker : MonoBehaviour
         sliderG.onValueChanged.AddListener(SetG);
         sliderB.onValueChanged.AddListener(SetB);
         inputFieldHexa.onValueChanged.AddListener(SetHexa);
-        buttonCancel.onClick.AddListener(Cancel);
-        buttonApply.onClick.AddListener(Apply);
+
+        SubscribeToEvents();
     }
     
     private void OnDisable()
@@ -41,9 +53,40 @@ public class ColorPicker : MonoBehaviour
         sliderG.onValueChanged.RemoveListener(SetG);
         sliderB.onValueChanged.RemoveListener(SetB);
         inputFieldHexa.onValueChanged.RemoveListener(SetHexa);
-        buttonCancel.onClick.RemoveListener(Cancel);
-        buttonApply.onClick.RemoveListener(Apply);
+
+        UnsubscribeFromEvents();
     }
+    #endregion
+
+    #region Event Subscription
+
+    private void SubscribeToEvents()
+    {
+        EventManagerProvider.UI.AddListener(UIEvent.OnColorPickerCancelled, HandleOnColorPickerCancelled);
+        EventManagerProvider.UI.AddListener(UIEvent.OnColorPickerApplied, HandleOnColorPickerApplied);
+    }
+    
+    private void UnsubscribeFromEvents()
+    {
+        EventManagerProvider.UI.RemoveListener(UIEvent.OnColorPickerCancelled, HandleOnColorPickerCancelled);
+        EventManagerProvider.UI.RemoveListener(UIEvent.OnColorPickerApplied, HandleOnColorPickerApplied);
+    }
+
+    #endregion
+
+    #region Event Handling
+
+    public void HandleOnColorPickerCancelled()
+    {
+        _modifiedColor = _originalColor;
+        RecalculateMenu(true);
+    }
+
+    public void HandleOnColorPickerApplied()
+    {
+        RecalculateMenu(true);
+    }
+    
     #endregion
 
     #region Initialization & Recalculation
@@ -165,28 +208,25 @@ public class ColorPicker : MonoBehaviour
     }
 
     #endregion
-  
-    #region Cancel & Done
-    
-    /// <summary>
-    /// Manually cancel the ColorPicker and recover the default value.
-    /// </summary>
-    public void Cancel()
+
+    #region UI Management
+
+    public bool CheckCanHide()
     {
-        _modifiedColor = _originalColor;
-        RecalculateMenu(true);
-        EventManagerProvider.UI.Broadcast(UIEvent.OnColorPickerCancelled, _modifiedColor);
+        Debug.Log("IsModified: " + IsModified);
+        if (IsModified)
+        {
+            EventManagerProvider.UI.Broadcast(UIEvent.OnColorPickerCannotHide);
+            return false;
+        }
+        return true;
     }
 
-    /// <summary>
-    /// Manually close the ColorPicker and apply the selected color
-    /// </summary>
-    public void Apply()
+    public void Hide()
     {
-        RecalculateMenu(true);
-        EventManagerProvider.UI.Broadcast(UIEvent.OnColorPickerApplied, _modifiedColor);
+        gameObject.SetActive(false);
     }
-    
+
     #endregion
 
     /// <summary>

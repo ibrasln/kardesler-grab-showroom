@@ -19,6 +19,7 @@ namespace IboshEngine.Runtime.Core.EventManagement
         OnColorPickerPanelClosed,
         OnColorPickerApplied,
         OnColorPickerCancelled,
+        OnColorPickerCannotHide,
     }
 
     /// <summary>
