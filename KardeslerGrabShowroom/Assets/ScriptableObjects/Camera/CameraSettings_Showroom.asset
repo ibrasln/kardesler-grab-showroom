@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc43eb7be7d6d28498353cf0a7d4bac0, type: 3}
   m_Name: CameraSettings_Showroom
   m_EditorClassIdentifier: Assembly-CSharp::KardeslerGrabShowroom.Core.CameraManagement.CameraSettings
-  PhonePosition: {x: -4.5, y: 2.35, z: -32.6}
-  PhoneRotation: {x: 20, y: -90, z: 0}
-  PhoneFOV: 65
+  PhonePosition: {x: -4.27, y: 3.47, z: -32.57}
+  PhoneRotation: {x: 25, y: -90, z: 0}
+  PhoneFOV: 70
   TabletPosition: {x: -4.5, y: 2.35, z: -32.6}
   TabletRotation: {x: 20, y: -90, z: 0}
   TabletFOV: 65
