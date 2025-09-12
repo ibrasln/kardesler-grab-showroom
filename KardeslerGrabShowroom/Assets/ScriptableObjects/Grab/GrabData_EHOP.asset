@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KardeslerGrabShowroom.Gameplay.Grab.GrabData
   Name: Electro Hydraulic Orange Peel
   Description: lorem ipsum
-  MainColor: {r: 0.2319361, g: 1, b: 0, a: 1}
-  SubColor: {r: 0.122456394, g: 0.42271882, b: 0.4415095, a: 1}
+  MainColor: {r: 0, g: 0.47691393, b: 1, a: 1}
+  SubColor: {r: 0, g: 0, b: 0, a: 1}
   YOffset: 1.6

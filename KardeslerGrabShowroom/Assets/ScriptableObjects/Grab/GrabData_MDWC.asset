@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d0f61e3c0c93664387cb7b464060943, type: 3}
-  m_Name: GrabData_EHC
+  m_Name: GrabData_MDWC
   m_EditorClassIdentifier: Assembly-CSharp::KardeslerGrabShowroom.Gameplay.Grab.GrabData
-  Name: Electro Hydraulic Clamshell
+  Name: Mechanical Double Wired Clamshell
   Description: lorem ipsum
-  MainColor: {r: 0.9245283, g: 0.8979475, b: 0.10291912, a: 1}
+  MainColor: {r: 1, g: 0.44989705, b: 0, a: 1}
   SubColor: {r: 0, g: 0, b: 0, a: 1}
-  YOffset: 1.75
+  YOffset: 2
