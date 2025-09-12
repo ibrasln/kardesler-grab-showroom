@@ -211,7 +211,7 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
 
             foreach (Renderer renderer in allRenderers)
             {
-                if ((renderer.name.Contains("PERNO") && !renderer.name.Contains("SACI")) || renderer.name.Contains("SOMUN") || renderer.name.Contains("ŞAPKA"))
+                if ((renderer.name.Contains("MİLİ") && !renderer.name.Contains("SACI")) || (renderer.name.Contains("PERNO") && !renderer.name.Contains("SACI")) || renderer.name.Contains("SOMUN") || renderer.name.Contains("ŞAPKA"))
                 {
                     renderer.material = subMaterial;
                 }
