@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6495494539278431883, guid: ff57291ccbfcb444c8ed666d5b2bc4a8, type: 3}
       propertyPath: m_Name
-      value: Grab_MFR
+      value: Grab_MDWC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1107,7 +1107,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 80163557887c0fd4ba8ac2bbaee52a17, type: 2}
     - target: {fileID: 919132149155446097, guid: b56a2769913d68743b93e170692d4d59, type: 3}
       propertyPath: m_Name
-      value: MDWC
+      value: MDWCG
       objectReference: {fileID: 0}
     - target: {fileID: 952209098143018514, guid: b56a2769913d68743b93e170692d4d59, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
