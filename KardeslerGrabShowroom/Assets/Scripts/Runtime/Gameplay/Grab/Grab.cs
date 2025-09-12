@@ -11,6 +11,7 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
 {
     public class Grab : MonoBehaviour
     {
+        [InlineEditor] public GrabData Data;
         private List<Renderer> _mainRenderers = new();
         private List<Renderer> _subRenderers = new();
         private Tween _rotationTween;
@@ -46,8 +47,16 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
 
             await UniTask.Delay(1000);
             
-            if (_mainRenderers.Count > 0) _mainColor = _mainRenderers[0].material.color;
-            if (_subRenderers.Count > 0) _subColor = _subRenderers[0].material.color;
+            if (_mainRenderers.Count > 0) 
+            {
+                _mainColor = Data.MainColor;
+                SetMainColor(_mainColor);
+            }
+            if (_subRenderers.Count > 0) 
+            {
+                _subColor = Data.SubColor;
+                SetSubColor(_subColor);
+            }
         }
 
         private void Start()
@@ -83,7 +92,7 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
         public async void Initialize(Transform from, Transform to)
         {
             EventManagerProvider.Showroom.Broadcast(ShowroomEvent.OnGrabMovementStarted);
-            transform.position = from.position;
+            transform.position = new Vector3(from.position.x, from.position.y + Data.YOffset, from.position.z);
             await MoveToAsync(to);
             StartRotation();
             EventManagerProvider.Showroom.Broadcast(ShowroomEvent.OnGrabMovementCompleted);
@@ -171,7 +180,7 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
 
         public async UniTask MoveToAsync(Transform target)
         {
-            await transform.DOMove(target.position, Settings.GrabMovementDuration).SetEase(Ease.InOutSine).ToUniTask();
+            await transform.DOMove(new Vector3(target.position.x, target.position.y + Data.YOffset, target.position.z), Settings.GrabMovementDuration).SetEase(Ease.InOutSine).ToUniTask();
         }
 
         #endregion

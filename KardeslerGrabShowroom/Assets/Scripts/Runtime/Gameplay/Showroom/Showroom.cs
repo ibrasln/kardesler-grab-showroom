@@ -77,7 +77,6 @@ namespace KardeslerGrabShowroom.Gameplay.Showroom
 
 		private void HandleOnMainColorChanged(Color32 color)
 		{
-			Debug.Log("HandleOnMainColorChanged: " + color);
 			if (CurrentGrab != null)
 			{
 				CurrentGrab.SetMainColor(color);
@@ -86,7 +85,6 @@ namespace KardeslerGrabShowroom.Gameplay.Showroom
 
 		private void HandleOnSubColorChanged(Color32 color)
 		{
-			Debug.Log("HandleOnSubColorChanged: " + color);
 			if (CurrentGrab != null)
 			{
 				CurrentGrab.SetSubColor(color);
