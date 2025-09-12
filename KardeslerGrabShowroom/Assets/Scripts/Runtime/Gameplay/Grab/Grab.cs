@@ -5,6 +5,7 @@ using DG.Tweening;
 using KardeslerGrab.Showroom.Utilities;
 using Cysharp.Threading.Tasks;
 using IboshEngine.Runtime.Core.EventManagement;
+using Sirenix.OdinInspector;
 
 namespace KardeslerGrabShowroom.Gameplay.Grab
 {
@@ -36,7 +37,7 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
                     {
                         _mainRenderers.Add(renderer);
                     }
-                    else if (material != null && material.name.Contains("M_Other"))
+                    else if (material != null && material.name.Contains("M_Sub"))
                     {
                         _subRenderers.Add(renderer);
                     }
@@ -193,6 +194,36 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
                 renderer.material.color = color;
             }
             _subColor = color;
+        }
+
+        #endregion
+    
+        #region Inspector Buttons
+
+        [Button(ButtonSizes.Medium)]
+        public void SetMaterials()
+        {
+            List<Renderer> allRenderers = GetComponentsInChildren<Renderer>(true).ToList();
+
+            Material mainMaterial = Resources.Load<Material>("Materials/M_Grab");
+            Material subMaterial = Resources.Load<Material>("Materials/M_Sub");
+            Material chassisMaterial = Resources.Load<Material>("Materials/M_Chassis");
+
+            foreach (Renderer renderer in allRenderers)
+            {
+                if ((renderer.name.Contains("PERNO") && !renderer.name.Contains("SACI")) || renderer.name.Contains("SOMUN"))
+                {
+                    renderer.material = subMaterial;
+                }
+                else if (renderer.name.Contains("PİSTON") && !renderer.name.Contains("SACI"))
+                {
+                    renderer.material = chassisMaterial;
+                }
+                else
+                {
+                    renderer.material = mainMaterial;
+                }
+            }
         }
 
         #endregion
