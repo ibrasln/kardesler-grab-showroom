@@ -101,7 +101,7 @@ namespace KardeslerGrabShowroom.Gameplay.Grab
         public async void Dispose(Transform from, Transform to)
         {
             StopRotation();
-            transform.position = from.position;
+            transform.position = new Vector3(from.position.x, from.position.y + Data.YOffset, from.position.z);
             await MoveToAsync(to);
             ResetRotation();
             gameObject.SetActive(false);
